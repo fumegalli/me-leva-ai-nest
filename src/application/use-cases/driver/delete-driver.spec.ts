@@ -1,7 +1,7 @@
-import InMemoryDriversRepository from '../../../test/repositories/in-memory-drivers-repository';
-import Driver from '../entities/driver/driver';
-import License from '../entities/driver/license';
-import Email from '../entities/person/email';
+import InMemoryDriversRepository from '../../../../test/repositories/in-memory-drivers-repository';
+import Driver from '../../entities/driver/driver';
+import License from '../../entities/driver/license';
+import Email from '../../entities/person/email';
 import DeleteDriver from './delete-driver';
 
 const TODAY = new Date();

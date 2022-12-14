@@ -15,4 +15,8 @@ export default class License {
     if (this.isExpired(props.expiresAt)) throw new Error('Expired license');
     this.props = props;
   }
+
+  public get category(): string {
+    return this.props.category;
+  }
 }

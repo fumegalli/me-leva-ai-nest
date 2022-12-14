@@ -9,7 +9,8 @@ export default class Passanger extends Person {
 
   constructor(props: Replace<PersonProps, { createdAt?: Date }>) {
     super(props);
-    if (this.isUnderAge(props.birthDate))
+    if (this.isUnderAge(props.birthDate)) {
       throw new Error('Passanger is under age');
+    }
   }
 }

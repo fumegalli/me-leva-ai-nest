@@ -1,4 +1,4 @@
-import DriversRepository from '../repositories/drivers-repository';
+import DriversRepository from '../../repositories/drivers-repository';
 
 export default class DeleteDriver {
   constructor(private readonly driversRepo: DriversRepository) {}

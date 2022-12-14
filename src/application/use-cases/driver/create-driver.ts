@@ -1,7 +1,7 @@
-import Driver from '../entities/driver/driver';
-import License from '../entities/driver/license';
-import Email from '../entities/person/email';
-import DriversRepository from '../repositories/drivers-repository';
+import Driver from '../../entities/driver/driver';
+import License from '../../entities/driver/license';
+import Email from '../../entities/person/email';
+import DriversRepository from '../../repositories/drivers-repository';
 
 interface Input {
   birthDate: Date;
