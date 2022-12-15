@@ -3,7 +3,7 @@ import BaseEntity from '../base-entity';
 interface Props {
   startingPoint: number;
   endingPoint: number;
-  passangerId: string;
+  passengerId: string;
   vehicleId: string;
 }
 

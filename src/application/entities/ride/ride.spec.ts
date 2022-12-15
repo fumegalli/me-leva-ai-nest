@@ -5,7 +5,7 @@ describe('Ride', () => {
     const ride = new Ride({
       startingPoint: 1,
       endingPoint: 2,
-      passangerId: '123',
+      passengerId: '123',
       vehicleId: '456',
     });
 
