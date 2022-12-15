@@ -1,8 +1,8 @@
-import InMemoryDriversRepository from '../../../test/repositories/in-memory-drivers-repository';
-import InMemoryVehiclesRepository from '../../../test/repositories/in-memory-vehicles-repository';
-import Driver from '../entities/driver/driver';
-import License from '../entities/driver/license';
-import Email from '../entities/person/email';
+import InMemoryDriversRepository from '../../../../test/repositories/in-memory-drivers-repository';
+import InMemoryVehiclesRepository from '../../../../test/repositories/in-memory-vehicles-repository';
+import Driver from '../../entities/driver/driver';
+import License from '../../entities/driver/license';
+import Email from '../../entities/person/email';
 import CreateVehicle from './create-vehicle';
 
 const TODAY = new Date();

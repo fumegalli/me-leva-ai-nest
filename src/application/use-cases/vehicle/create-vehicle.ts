@@ -1,6 +1,6 @@
-import Vehicle from '../entities/vehicle/vehicle';
-import DriversRepository from '../repositories/drivers-repository';
-import VehiclesRepository from '../repositories/vehicles-repository';
+import Vehicle from '../../entities/vehicle/vehicle';
+import DriversRepository from '../../repositories/drivers-repository';
+import VehiclesRepository from '../../repositories/vehicles-repository';
 
 interface Input {
   model: string;
