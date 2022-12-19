@@ -1,7 +1,7 @@
+import ArrivalTimeCalculator from '@application/entities/ride/arrival-time-calculator';
+import FareCalculator from '@application/entities/ride/fare-calculator';
 import RidesRepository from '@application/repositories/rides-repository';
 import RideNotFound from '../errors/ride-not-found';
-import ArrivalTimeCalculator from './arrival-time-calculator';
-import FareCalculator from './fare-calculator';
 
 interface Input {
   rideId: string;
