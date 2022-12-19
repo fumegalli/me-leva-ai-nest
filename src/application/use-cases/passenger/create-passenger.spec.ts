@@ -1,4 +1,4 @@
-import InMemoryPassengersRepository from '../../../../test/repositories/in-memory-passengers-repository';
+import InMemoryPassengersRepository from '@test/repositories/in-memory-passengers-repository';
 import CreatePassenger from './create-passenger';
 
 const TODAY = new Date();

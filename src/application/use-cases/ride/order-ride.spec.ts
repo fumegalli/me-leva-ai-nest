@@ -1,7 +1,7 @@
-import InMemoryVehiclesRepository from '../../../../test/repositories/in-memory-vehicles-repository';
-import InMemoryRidesRepository from '../../../../test/repositories/in-memory-rides-repository';
+import InMemoryVehiclesRepository from '@test/repositories/in-memory-vehicles-repository';
+import InMemoryRidesRepository from '@test/repositories/in-memory-rides-repository';
 import OrderRide from './order-ride';
-import Vehicle from '../../../../src/application/entities/vehicle/vehicle';
+import Vehicle from '@application/entities/vehicle/vehicle';
 import NoAvailableVehicle from '../errors/no-available-vehicle';
 
 describe('Order a ride', () => {

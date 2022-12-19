@@ -1,6 +1,6 @@
-import Ride from '../../../../src/application/entities/ride/ride';
-import RidesRepository from '../../../../src/application/repositories/rides-repository';
-import VehiclesRepository from '../../../../src/application/repositories/vehicles-repository';
+import Ride from '@application/entities/ride/ride';
+import RidesRepository from '@application/repositories/rides-repository';
+import VehiclesRepository from '@application/repositories/vehicles-repository';
 import NoAvailableVehicle from '../errors/no-available-vehicle';
 
 interface Input {

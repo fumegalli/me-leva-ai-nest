@@ -1,4 +1,4 @@
-import InMemoryDriversRepository from '../../../../test/repositories/in-memory-drivers-repository';
+import InMemoryDriversRepository from '@test/repositories/in-memory-drivers-repository';
 import CreateDriver from './create-driver';
 
 const TODAY = new Date();

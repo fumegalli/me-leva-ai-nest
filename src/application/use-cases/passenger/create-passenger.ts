@@ -1,4 +1,4 @@
-import Email from '../../../../src/application/entities/person/email';
+import Email from '@application/entities/person/email';
 import Passenger from '../../entities/passenger/passenger';
 import PassengersRepository from '../../repositories/passengers-repository';
 
