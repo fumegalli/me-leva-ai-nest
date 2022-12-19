@@ -1,10 +1,13 @@
 import BaseEntity from '../base-entity';
 
-interface Props {
+export interface Props {
   startingPoint: number;
   endingPoint: number;
   passengerId: string;
   vehicleId: string;
+  startedAt?: Date;
+  estimatedArrivalTimeInMinutes?: number;
+  estimatedFare?: number;
 }
 
 export default class Ride extends BaseEntity {
@@ -17,5 +20,21 @@ export default class Ride extends BaseEntity {
 
   public get vehicleId(): string {
     return this.props.vehicleId;
+  }
+
+  public get startedAt(): Date | null {
+    return this.props.startedAt;
+  }
+
+  public start(): void {
+    this.props.startedAt = new Date();
+  }
+
+  public estimateArrivalTime(arrivalTimeInMinutes: number) {
+    this.props.estimatedArrivalTimeInMinutes = arrivalTimeInMinutes;
+  }
+
+  public estimateFare(fare: number) {
+    this.props.estimatedFare = fare;
   }
 }
