@@ -1,4 +1,4 @@
-import makeRide from '@test/factories/ride-factory';
+import { makeRide } from '@test/factories/ride-factory';
 import InMemoryRidesRepository from '@test/repositories/in-memory-rides-repository';
 import RideNotFound from '../errors/ride-not-found';
 import StartRide from './start-ride';

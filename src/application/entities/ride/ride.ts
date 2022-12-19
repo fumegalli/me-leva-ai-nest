@@ -12,6 +12,8 @@ export interface Props {
 }
 
 export default class Ride extends BaseEntity {
+  private readonly MIN_TIME_IN_MINUTES = 10;
+  private readonly MAX_TIME_IN_MINUTES = 30;
   private props: Props;
 
   constructor(props: Props) {
@@ -35,8 +37,14 @@ export default class Ride extends BaseEntity {
     this.props.startedAt = new Date();
   }
 
-  public estimateArrivalTime(arrivalTimeInMinutes: number) {
-    this.props.estimatedArrivalTimeInMinutes = arrivalTimeInMinutes;
+  public get estimatedArrivalTime() {
+    return this.props.estimatedArrivalTimeInMinutes;
+  }
+
+  public estimateArrivalTime() {
+    const interval = this.MAX_TIME_IN_MINUTES - this.MIN_TIME_IN_MINUTES;
+    this.props.estimatedArrivalTimeInMinutes =
+      Math.random() * interval + this.MIN_TIME_IN_MINUTES;
   }
 
   public estimateFare(fare: number) {

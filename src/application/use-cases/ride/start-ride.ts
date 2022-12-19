@@ -1,4 +1,3 @@
-import ArrivalTimeCalculator from '@application/entities/ride/arrival-time-calculator';
 import FareCalculator from '@application/entities/ride/fare-calculator';
 import RidesRepository from '@application/repositories/rides-repository';
 import RideNotFound from '../errors/ride-not-found';
@@ -19,13 +18,13 @@ export default class StartRide {
     const ride = await this.ridesRepo.findById(input.rideId);
     if (!ride) throw new RideNotFound();
     ride.start();
-    const estimatedArrivalTimeInMinutes = ArrivalTimeCalculator.estimate();
-    ride.estimateArrivalTime(estimatedArrivalTimeInMinutes);
-    const estimatedFare = FareCalculator.estimate(
-      estimatedArrivalTimeInMinutes,
-    );
+    ride.estimateArrivalTime();
+    const estimatedFare = FareCalculator.estimate(ride.estimatedArrivalTime);
     ride.estimateFare(estimatedFare);
     await this.ridesRepo.save(ride);
-    return { estimatedArrivalTimeInMinutes, estimatedFare };
+    return {
+      estimatedArrivalTimeInMinutes: ride.estimatedArrivalTime,
+      estimatedFare,
+    };
   }
 }
