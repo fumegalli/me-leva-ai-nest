@@ -7,4 +7,8 @@ export default class InMemoryVehiclesRepository implements VehiclesRepository {
   async create(vehicle: Vehicle): Promise<void> {
     this.vehicles.push(vehicle);
   }
+
+  async findFistAvailable(): Promise<Vehicle | null> {
+    return this.vehicles[0];
+  }
 }

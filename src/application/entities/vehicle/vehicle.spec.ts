@@ -1,13 +1,13 @@
 import Vehicle from './vehicle';
 
-describe('Vechicle', () => {
+describe('Vehicle', () => {
   it('should be able to create a vehicle', () => {
-    const vechicle = new Vehicle({
+    const vehicle = new Vehicle({
       model: 'Tesla X',
       category: 'B',
       ownerId: '123',
     });
 
-    expect(vechicle).toBeTruthy();
+    expect(vehicle).toBeTruthy();
   });
 });

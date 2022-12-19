@@ -14,4 +14,8 @@ export default class Ride extends BaseEntity {
     super();
     this.props = props;
   }
+
+  public get vehicleId(): string {
+    return this.props.vehicleId;
+  }
 }
