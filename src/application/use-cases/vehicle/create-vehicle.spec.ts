@@ -1,23 +1,12 @@
+import makeDriver from '@test/factories/driver-factory';
 import InMemoryDriversRepository from '@test/repositories/in-memory-drivers-repository';
 import InMemoryVehiclesRepository from '@test/repositories/in-memory-vehicles-repository';
-import Driver from '../../entities/driver/driver';
-import License from '../../entities/driver/license';
-import Email from '../../entities/person/email';
 import CreateVehicle from './create-vehicle';
 
 const TODAY = new Date();
 const TOMORROW = new Date();
 TOMORROW.setDate(TODAY.getDate() + 1);
-const OWNER = new Driver({
-  birthDate: new Date(2000, 1, 1),
-  email: new Email('test@test.com'),
-  fullName: 'Rafael Fumegalli',
-  license: new License({
-    category: 'B',
-    code: 123,
-    expiresAt: TOMORROW,
-  }),
-});
+const OWNER = makeDriver();
 
 describe('Create Vehicle', () => {
   it('should be able to create a new vehicle', async () => {
