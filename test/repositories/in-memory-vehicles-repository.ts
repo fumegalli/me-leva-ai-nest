@@ -8,7 +8,11 @@ export default class InMemoryVehiclesRepository implements VehiclesRepository {
     this.vehicles.push(vehicle);
   }
 
-  async findFistAvailable(): Promise<Vehicle | null> {
-    return this.vehicles[0];
+  async findFistAvailableByOwner(ownerId: string): Promise<Vehicle | null> {
+    const vehicle = this.vehicles.find(
+      (vehicle) => vehicle.ownerId === ownerId,
+    );
+    if (!vehicle) return null;
+    return vehicle;
   }
 }

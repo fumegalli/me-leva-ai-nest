@@ -5,6 +5,7 @@ export interface Props {
   endingPoint: number;
   passengerId: string;
   vehicleId: string;
+  driverId: string;
   startedAt?: Date;
   estimatedArrivalTimeInMinutes?: number;
   estimatedFare?: number;
@@ -20,6 +21,10 @@ export default class Ride extends BaseEntity {
 
   public get vehicleId(): string {
     return this.props.vehicleId;
+  }
+
+  public get driverId(): string {
+    return this.props.driverId;
   }
 
   public get startedAt(): Date | null {

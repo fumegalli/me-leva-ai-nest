@@ -1,22 +1,18 @@
 import InMemoryVehiclesRepository from '@test/repositories/in-memory-vehicles-repository';
 import InMemoryRidesRepository from '@test/repositories/in-memory-rides-repository';
 import OrderRide from './order-ride';
-import Vehicle from '@application/entities/vehicle/vehicle';
 import NoAvailableVehicle from '../errors/no-available-vehicle';
+import makeVehicle from '@test/factories/vehicle-factory';
 
 describe('Order a ride', () => {
   it('should order a new ride', async () => {
     const ridesRepo = new InMemoryRidesRepository();
     const vehiclesRepo = new InMemoryVehiclesRepository();
-    vehiclesRepo.create(
-      new Vehicle({
-        model: 'Tesla X',
-        category: 'B',
-        ownerId: '123',
-      }),
-    );
+    const vehicle = makeVehicle();
+    vehiclesRepo.create(vehicle);
     const orderRide = new OrderRide(ridesRepo, vehiclesRepo);
     const { ride } = await orderRide.execute({
+      driverId: vehicle.ownerId,
       passengerId: '123',
       startingPoint: 1,
       endingPoint: 2,
@@ -34,6 +30,7 @@ describe('Order a ride', () => {
 
     expect(() => {
       return orderRide.execute({
+        driverId: '1234',
         passengerId: '123',
         startingPoint: 1,
         endingPoint: 2,

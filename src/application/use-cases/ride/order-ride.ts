@@ -5,6 +5,7 @@ import NoAvailableVehicle from '../errors/no-available-vehicle';
 
 interface Input {
   passengerId: string;
+  driverId: string;
   startingPoint: number;
   endingPoint: number;
 }
@@ -16,13 +17,16 @@ export default class OrderRide {
   ) {}
 
   async execute(input: Input) {
-    const vehicle = await this.vehiclesRepo.findFistAvailable();
+    const vehicle = await this.vehiclesRepo.findFistAvailableByOwner(
+      input.driverId,
+    );
     if (!vehicle) throw new NoAvailableVehicle();
     const ride = new Ride({
       passengerId: input.passengerId,
       endingPoint: input.endingPoint,
       startingPoint: input.startingPoint,
       vehicleId: vehicle.id,
+      driverId: input.driverId,
     });
     await this.ridesRepo.create(ride);
     return { ride };
