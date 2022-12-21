@@ -45,18 +45,4 @@ describe('Withdraw', () => {
       }),
     ).rejects.toThrow(InsufficientBalance);
   });
-
-  it('should throw invalid withdraw when amount is lower or equal to 0', async () => {
-    const driver = makeDriver();
-    const driversRepo = new InMemoryDriversRepository();
-    driversRepo.create(driver);
-    const withdraw = new Withdraw(driversRepo);
-
-    await expect(() =>
-      withdraw.execute({
-        driverId: driver.id,
-        amount: 0,
-      }),
-    ).rejects.toThrow(InvalidWithdraw);
-  });
 });
