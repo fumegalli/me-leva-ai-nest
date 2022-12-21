@@ -2,7 +2,6 @@ import InsufficientBalance from '@application/entities/errors/insufficient-balan
 import makeDriver from '@test/factories/driver-factory';
 import InMemoryDriversRepository from '@test/repositories/in-memory-drivers-repository';
 import driverNotFound from '../errors/driver-not-found';
-import InvalidWithdraw from '../errors/invalid-withdraw';
 import Withdraw from './withdraw';
 
 describe('Withdraw', () => {
