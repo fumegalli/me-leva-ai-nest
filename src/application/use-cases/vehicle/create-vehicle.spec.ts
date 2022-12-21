@@ -29,13 +29,12 @@ describe('Create Vehicle', () => {
     driversRepo.create(OWNER);
     const vehiclesRepo = new InMemoryVehiclesRepository();
     const createVehicle = new CreateVehicle(vehiclesRepo, driversRepo);
-    await expect(
-      async () =>
-        await createVehicle.execute({
-          model: 'Tesla X',
-          category: 'A',
-          ownerId: OWNER.id,
-        }),
+    await expect(() =>
+      createVehicle.execute({
+        model: 'Tesla X',
+        category: 'A',
+        ownerId: OWNER.id,
+      }),
     ).rejects.toThrow(new Error('Driver not allowed to drive this vehicle'));
   });
 
@@ -43,13 +42,12 @@ describe('Create Vehicle', () => {
     const driversRepo = new InMemoryDriversRepository();
     const vehiclesRepo = new InMemoryVehiclesRepository();
     const createVehicle = new CreateVehicle(vehiclesRepo, driversRepo);
-    await expect(
-      async () =>
-        await createVehicle.execute({
-          model: 'Tesla X',
-          category: 'A',
-          ownerId: '123',
-        }),
+    await expect(() =>
+      createVehicle.execute({
+        model: 'Tesla X',
+        category: 'A',
+        ownerId: '123',
+      }),
     ).rejects.toThrow(new Error('Owner not found'));
   });
 });

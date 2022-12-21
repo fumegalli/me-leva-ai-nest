@@ -23,10 +23,10 @@ describe('Start a ride', () => {
     const ridesRepo = new InMemoryRidesRepository();
     const startRide = new StartRide(ridesRepo);
 
-    expect(() => {
-      return startRide.execute({
+    await expect(() =>
+      startRide.execute({
         rideId: 'fake-id',
-      });
-    }).rejects.toThrow(RideNotFound);
+      }),
+    ).rejects.toThrow(RideNotFound);
   });
 });

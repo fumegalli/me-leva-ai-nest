@@ -20,8 +20,8 @@ describe('Delete Driver', () => {
   it('should throw error when driver doesnt exists', async () => {
     const driversRepo = new InMemoryDriversRepository();
     const deleteDriver = new DeleteDriver(driversRepo);
-    await expect(
-      async () => await deleteDriver.execute(DRIVER_TO_DELETE.id),
+    await expect(() =>
+      deleteDriver.execute(DRIVER_TO_DELETE.id),
     ).rejects.toThrow(new Error('Driver not found'));
   });
 });

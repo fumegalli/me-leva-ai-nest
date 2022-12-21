@@ -28,13 +28,13 @@ describe('Order a ride', () => {
     const vehiclesRepo = new InMemoryVehiclesRepository();
     const orderRide = new OrderRide(ridesRepo, vehiclesRepo);
 
-    expect(() => {
-      return orderRide.execute({
+    await expect(() =>
+      orderRide.execute({
         driverId: '1234',
         passengerId: '123',
         startingPoint: 1,
         endingPoint: 2,
-      });
-    }).rejects.toThrow(NoAvailableVehicle);
+      }),
+    ).rejects.toThrow(NoAvailableVehicle);
   });
 });
