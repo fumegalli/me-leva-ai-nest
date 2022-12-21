@@ -1,6 +1,8 @@
 import Vehicle from '../../entities/vehicle/vehicle';
 import DriversRepository from '../../repositories/drivers-repository';
 import VehiclesRepository from '../../repositories/vehicles-repository';
+import DriverNotAllowedToDriveVehicle from '../errors/driver-not-allowed-to-drive-vehicle';
+import OwnerNotFound from '../errors/owner-not-found';
 
 interface Input {
   model: string;
@@ -17,10 +19,10 @@ export default class CreateVehicle {
   async execute(input: Input) {
     const owner = await this.driversRepo.findById(input.ownerId);
     if (!owner) {
-      throw new Error('Owner not found');
+      throw new OwnerNotFound();
     }
     if (owner.license.category !== input.category) {
-      throw new Error('Driver not allowed to drive this vehicle');
+      throw new DriverNotAllowedToDriveVehicle();
     }
     const vehicle = new Vehicle({
       category: input.category,

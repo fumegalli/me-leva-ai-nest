@@ -1,3 +1,5 @@
+import InvalidEmail from '@application/entities/errors/invalid-email';
+
 export default class Email {
   private readonly email: string;
 
@@ -10,7 +12,7 @@ export default class Email {
   }
 
   constructor(email: string) {
-    if (!this.isValid(email)) throw new Error('Invalid email');
+    if (!this.isValid(email)) throw new InvalidEmail();
     this.email = email;
   }
 }

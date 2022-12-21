@@ -1,6 +1,8 @@
 import makeDriver from '@test/factories/driver-factory';
 import InMemoryDriversRepository from '@test/repositories/in-memory-drivers-repository';
 import InMemoryVehiclesRepository from '@test/repositories/in-memory-vehicles-repository';
+import DriverNotAllowedToDriveVehicle from '../errors/driver-not-allowed-to-drive-vehicle';
+import OwnerNotFound from '../errors/owner-not-found';
 import CreateVehicle from './create-vehicle';
 
 const TODAY = new Date();
@@ -35,7 +37,7 @@ describe('Create Vehicle', () => {
         category: 'A',
         ownerId: OWNER.id,
       }),
-    ).rejects.toThrow(new Error('Driver not allowed to drive this vehicle'));
+    ).rejects.toThrow(DriverNotAllowedToDriveVehicle);
   });
 
   it('should throw error when owner is not found', async () => {
@@ -48,6 +50,6 @@ describe('Create Vehicle', () => {
         category: 'A',
         ownerId: '123',
       }),
-    ).rejects.toThrow(new Error('Owner not found'));
+    ).rejects.toThrow(OwnerNotFound);
   });
 });

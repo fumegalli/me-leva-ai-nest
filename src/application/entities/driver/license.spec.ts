@@ -1,3 +1,4 @@
+import ExpiredLicense from '@application/entities/errors/expired-license';
 import License from './license';
 
 const TODAY = new Date();
@@ -25,6 +26,6 @@ describe('License', () => {
           category: 'B',
           expiresAt: YESTERDAY,
         }),
-    ).toThrow(new Error('Expired license'));
+    ).toThrow(ExpiredLicense);
   });
 });

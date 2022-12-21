@@ -1,5 +1,6 @@
 import makeDriver from '@test/factories/driver-factory';
 import InMemoryDriversRepository from '@test/repositories/in-memory-drivers-repository';
+import DriverNotFound from '../errors/driver-not-found';
 import DeleteDriver from './delete-driver';
 
 const TODAY = new Date();
@@ -22,6 +23,6 @@ describe('Delete Driver', () => {
     const deleteDriver = new DeleteDriver(driversRepo);
     await expect(() =>
       deleteDriver.execute(DRIVER_TO_DELETE.id),
-    ).rejects.toThrow(new Error('Driver not found'));
+    ).rejects.toThrow(DriverNotFound);
   });
 });

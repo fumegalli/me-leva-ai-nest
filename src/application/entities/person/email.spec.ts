@@ -1,3 +1,4 @@
+import InvalidEmail from '../errors/invalid-email';
 import Email from './email';
 
 describe('Email', () => {
@@ -8,10 +9,10 @@ describe('Email', () => {
   });
 
   it('should throw error when email doesnt include @', () => {
-    expect(() => new Email('test.com')).toThrow(new Error('Invalid email'));
+    expect(() => new Email('test.com')).toThrow(InvalidEmail);
   });
 
   it('should throw error when email doesnt include .com', () => {
-    expect(() => new Email('test@test')).toThrow(new Error('Invalid email'));
+    expect(() => new Email('test@test')).toThrow(InvalidEmail);
   });
 });

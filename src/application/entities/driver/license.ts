@@ -1,3 +1,5 @@
+import ExpiredLicense from '../errors/expired-license';
+
 interface Props {
   code: number;
   category: string;
@@ -12,7 +14,7 @@ export default class License {
   }
 
   constructor(props: Props) {
-    if (this.isExpired(props.expiresAt)) throw new Error('Expired license');
+    if (this.isExpired(props.expiresAt)) throw new ExpiredLicense();
     this.props = props;
   }
 

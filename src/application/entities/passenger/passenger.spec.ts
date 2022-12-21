@@ -1,3 +1,4 @@
+import PassengerUnderAge from '../errors/passenger-under-age';
 import Email from '../person/email';
 import Passenger from './passenger';
 
@@ -24,6 +25,6 @@ describe('Passenger', () => {
           email: new Email('test@test.com'),
           fullName: 'Rafael Fumegalli',
         }),
-    ).toThrow(new Error('Passenger is under age'));
+    ).toThrow(PassengerUnderAge);
   });
 });

@@ -1,4 +1,5 @@
 import { Replace } from '../../helpers/Replace';
+import DriverUnderAge from '../errors/driver-under-age';
 import Person, { PersonProps } from '../person/person';
 import License from './license';
 
@@ -17,7 +18,7 @@ export default class Driver extends Person {
   constructor(props: Replace<Props, { createdAt?: Date }>) {
     super(props);
     if (this.isUnderAge(props.birthDate)) {
-      throw new Error('Driver is under age'); // TODO: Create custom error
+      throw new DriverUnderAge();
     }
     this._license = props.license;
   }

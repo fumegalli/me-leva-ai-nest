@@ -1,3 +1,4 @@
+import DriverUnderAge from '../errors/driver-under-age';
 import Email from '../person/email';
 import Driver from './driver';
 import License from './license';
@@ -35,6 +36,6 @@ describe('Driver', () => {
             expiresAt: TOMORROW,
           }),
         }),
-    ).toThrow(new Error('Driver is under age'));
+    ).toThrow(DriverUnderAge);
   });
 });
