@@ -17,7 +17,7 @@ export default class Driver extends Person {
   constructor(props: Replace<Props, { createdAt?: Date }>) {
     super(props);
     if (this.isUnderAge(props.birthDate)) {
-      throw new Error('Driver is under age');
+      throw new Error('Driver is under age'); // TODO: Create custom error
     }
     this._license = props.license;
   }

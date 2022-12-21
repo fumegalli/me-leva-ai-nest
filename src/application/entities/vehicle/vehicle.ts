@@ -1,6 +1,6 @@
 import BaseEntity from '../base-entity';
 
-interface Props {
+export interface Props {
   model: string;
   category: string;
   ownerId: string;

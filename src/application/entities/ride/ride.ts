@@ -7,8 +7,10 @@ export interface Props {
   vehicleId: string;
   driverId: string;
   startedAt?: Date;
+  endedAt?: Date;
   estimatedArrivalTimeInMinutes?: number;
   estimatedFare?: number;
+  fare?: number;
 }
 
 export default class Ride extends BaseEntity {
@@ -37,6 +39,14 @@ export default class Ride extends BaseEntity {
     this.props.startedAt = new Date();
   }
 
+  public get endedAt(): Date | null {
+    return this.props.endedAt;
+  }
+
+  public finish(): void {
+    this.props.endedAt = new Date();
+  }
+
   public get estimatedArrivalTime() {
     return this.props.estimatedArrivalTimeInMinutes;
   }
@@ -49,5 +59,17 @@ export default class Ride extends BaseEntity {
 
   public estimateFare(fare: number) {
     this.props.estimatedFare = fare;
+  }
+
+  public fare(fare: number) {
+    this.props.fare = fare;
+  }
+
+  public get getFare() {
+    return this.props.fare;
+  }
+
+  public get passengerId() {
+    return this.props.passengerId;
   }
 }

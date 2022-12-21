@@ -12,7 +12,16 @@ export default class InMemoryDriversRepository implements DriversRepository {
     this.drivers = this.drivers.filter((driver) => driver.id !== id);
   }
 
-  async findById(id: string): Promise<Driver | null> {
-    return this.drivers.find((driver) => driver.id === id);
+  async findById(id: string): Promise<Driver> {
+    const driver = this.drivers.find((driver) => driver.id === id);
+    if (!driver) return null;
+    return driver;
+  }
+
+  async save(driver: Driver): Promise<void> {
+    const driverIndex = this.drivers.findIndex((item) => item.id === driver.id);
+    if (driverIndex >= 0) {
+      this.drivers[driverIndex] = driver;
+    }
   }
 }
