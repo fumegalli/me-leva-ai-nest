@@ -11,7 +11,6 @@ export default function makeDriver(override: Partial<PersonProps> = {}) {
   return new Driver({
     license: new License({
       category: 'B',
-      code: 123,
       expiresAt: TOMORROW,
     }),
     birthDate: new Date(2000, 1, 1),

@@ -1,0 +1,87 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Wallet {
+  id        String     @id
+  balance   Int        @default(0)
+  Driver    Driver?
+  createdAt DateTime   @default(now())
+  Passenger Passenger?
+}
+
+model License {
+  id        String   @id
+  category  String
+  expiresAt DateTime
+  Driver    Driver[]
+}
+
+model Driver {
+  id        String    @id
+  fullName  String
+  email     String
+  birthDate DateTime
+  License   License   @relation(fields: [licenseId], references: [id])
+  licenseId String
+  wallet    Wallet    @relation(fields: [walletId], references: [id])
+  walletId  String    @unique
+  Vehicle   Vehicle[]
+  Ride      Ride[]
+  createdAt DateTime  @default(now())
+
+  @@index([id])
+}
+
+model Passenger {
+  id        String   @id
+  fullName  String
+  email     String
+  birthDate DateTime
+  Ride      Ride[]
+  wallet    Wallet   @relation(fields: [walletId], references: [id])
+  createdAt DateTime @default(now())
+  walletId  String   @unique
+
+  @@index([id])
+}
+
+model Vehicle {
+  id        String   @id
+  model     String
+  category  String
+  owner     Driver   @relation(fields: [ownerId], references: [id])
+  ownerId   String
+  Ride      Ride[]
+  createdAt DateTime @default(now())
+
+  @@index([ownerId])
+}
+
+model Ride {
+  id                            String    @id
+  startingPoint                 Int
+  endingPoint                   Int
+  passenger                     Passenger @relation(fields: [passengerId], references: [id])
+  passengerId                   String
+  vehicle                       Vehicle   @relation(fields: [vehicleId], references: [id])
+  vehicleId                     String
+  driver                        Driver    @relation(fields: [driverId], references: [id])
+  driverId                      String
+  startedAt                     DateTime?
+  endedAt                       DateTime?
+  estimatedArrivalTimeInMinutes Int?
+  estimatedFare                 Int?
+  fare                          Int?
+  createdAt                     DateTime  @default(now())
+
+  @@index([id])
+}

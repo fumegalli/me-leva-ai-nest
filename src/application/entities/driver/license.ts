@@ -1,12 +1,12 @@
+import BaseEntity from '../base-entity';
 import ExpiredLicense from '../errors/expired-license';
 
 interface Props {
-  code: number;
   category: string;
   expiresAt: Date;
 }
 
-export default class License {
+export default class License extends BaseEntity {
   private props: Props;
 
   private isExpired(expiresAt: Date): boolean {
@@ -14,6 +14,7 @@ export default class License {
   }
 
   constructor(props: Props) {
+    super();
     if (this.isExpired(props.expiresAt)) throw new ExpiredLicense();
     this.props = props;
   }

@@ -15,7 +15,6 @@ describe('Driver', () => {
       fullName: 'Rafael Fumegalli',
       license: new License({
         category: 'B',
-        code: 123,
         expiresAt: TOMORROW,
       }),
     });
@@ -32,7 +31,6 @@ describe('Driver', () => {
           fullName: 'Rafael Fumegalli',
           license: new License({
             category: 'B',
-            code: 123,
             expiresAt: TOMORROW,
           }),
         }),
